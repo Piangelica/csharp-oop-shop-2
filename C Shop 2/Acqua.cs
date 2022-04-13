@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_Shop_2
 {
-    internal class Acqua
+    internal class Acqua : Prodotto
     {
         private double litri;
         private double ph;
