@@ -10,15 +10,17 @@ namespace C_Shop_2
     {
         private double peso;
         private string materialeScatola;
+        public static readonly int MaxCapienza = 300;
         public CiboInScatola(string nome, string descrizione, double peso, double prezzo, int iva) : base(nome, descrizione, prezzo, iva)
         {
             this.peso = peso;
              
             this.materialeScatola = materialeScatola;
+
         }
         public override void NomeEsteso()
         {
-            // CODICE - NOME - LITRI
+            // CODICE - NOME - Grammi
             Console.WriteLine("Il nome esteso del cibo in scatola è: " + base.PadLeft() + " - " + base.nome + " - " + this.peso + " gr");
         }
 

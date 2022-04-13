@@ -11,6 +11,7 @@ namespace C_Shop_2
         private double litri;
         private double ph;
         private string sorgentediprovenienza;
+        public static readonly double maxCapienza = 1.5;
 
         public Acqua(string nomeAcqua, string descrizione, double litri, string materiale, double ph, string sorgentediprovenienza) : base(nomeAcqua, descrizione, litri, ph, sorgentediprovenienza)
         {
@@ -35,7 +36,7 @@ namespace C_Shop_2
         public override void StampaProdotto()
         {
             // CODICE - NOME - LITRI
-            Console.WriteLine("Il nome esteso della bevanda è: " + base.PadLeft() + " - " + base.nome + " - " + this.litri + " litri" + this.ph + "ph"+ this.sorgentediprovenienza + "sorgente");
+            Console.WriteLine("Il nome esteso dell'acqua è: " + base.PadLeft() + " - " + base.nome + " - " + this.litri + " litri" + this.ph + "ph"+ this.sorgentediprovenienza + "sorgente");
         }
 
         public void Bevi(double litriDaBere)
@@ -50,26 +51,53 @@ namespace C_Shop_2
                 Console.WriteLine("Mi dispiace hai finito la bottiglia");
                 this.litri = 0;
             }
-            public void Riempi(double litriDaBere)
+            public void Riempi(double litriDaRiempire)
             {
-                if (this.litri < 1.5)
+                if (litriDaRiempire + this.litri > maxCapienza)
                 {
                    
-                    Console.WriteLine("Hai riempito tutta la bottiglia" + litriDaBere);
+                    Console.WriteLine("Hai riempito tutta la bottiglia" + litriDaRiempire);
+                    this.litri = maxCapienza;
+                }
+                else if (litriDaRiempire < 0)
+                {
+                    Console.WriteLine("Mi dispiace, non è possibile riempire la bottiglia, il valore è negativo");
+                    this.litri = maxCapienza;
                 }
                 else
                 {
                     Console.WriteLine("Mi dispiace, non è più possibile riempire la bottiglia");
-                    this.litri = 0;
+                    this.litri = this.litri + litriDaRiempire;
                 }
-                public void Svuota(double litriDaBere)
-                {
-                    if (this.litri < 1.5)
+                public void Svuota()
+  
                     {
 
                         Console.WriteLine("Rimuovo tutta l’acqua dalla bottiglia. " + litriDaBere);
+                        this.litri = 0;
                     }
-                   
+                public static void ConversioneLitriInGallone(double litri)
+                {
+                    const double gallone = 3.785;
+                    double LitriInGallone = 0;
+                    if (litri > 0)
+                    {
+                        LitriInGallone = gallone * litri;
+                        Console.WriteLine(" I galloni sono: " + LitriInGallone );
+                    }
+                    else
+                    {
+                       
+                        Console.WriteLine(" Non è possibile convertire una quantità che è negativa");
+                    }
+                    
+
+                public double Getph()
+                    {
+                        return ph;
+                    }
+public override void StampaProdotto
+
                 }
     }
 
