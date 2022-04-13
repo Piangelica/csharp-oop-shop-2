@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_Shop_2
 {
-    internal class Sacchetto_di_Frutta
+    internal class Sacchetto_di_Frutta : Prodotto
     {
         private /*static*/ double NumeroPezziFrutta;
         private string materialeSacchetto;
